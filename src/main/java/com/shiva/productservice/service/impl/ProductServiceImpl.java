@@ -62,7 +62,7 @@ public class ProductServiceImpl implements ProductService {
 	@Override
 	public List<Product> getProducts(String category) {
 		List<Product> products = productRepository.findByCategory(category);
-		products.sort(new ProductAvailabilityComparator().thenComparing(new DiscountPriceComparator())
+		products.sort(new ProductAvailabilityComparator().reversed().thenComparing(new DiscountPriceComparator())
 				.thenComparing(new ProductIdComparator()));
 		return products;
 	}
